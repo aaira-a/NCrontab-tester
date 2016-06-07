@@ -16,7 +16,17 @@ namespace NCronTabTest
                 Console.WriteLine("Enter NCronTab expression: \n");
                 string myinput = Console.ReadLine();
                 Console.WriteLine();
-                GetOccurrences(myinput);
+
+                try
+                {
+                    GetOccurrences(myinput);
+                }
+
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+
                 Console.WriteLine();
                 Console.WriteLine("Press any key to continue...\n");
             }
