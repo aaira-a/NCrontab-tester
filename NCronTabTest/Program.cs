@@ -11,8 +11,21 @@ namespace NCronTabTest
     {
         static void Main(string[] args)
         {
-            string mystring = "0 0 6 29 2 1";
-            var schedule = CrontabSchedule.Parse(mystring, new CrontabSchedule.ParseOptions { IncludingSeconds = true });
+            while (true) 
+            {
+                Console.WriteLine("Enter NCronTab expression: \n");
+                string myinput = Console.ReadLine();
+                Console.WriteLine();
+                GetOccurrences(myinput);
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue...\n");
+            }
+
+        }
+    
+        static void GetOccurrences(string expression)
+        {
+            var schedule = CrontabSchedule.Parse(expression, new CrontabSchedule.ParseOptions { IncludingSeconds = true });
             var occurrences = schedule.GetNextOccurrences(DateTime.UtcNow, DateTime.UtcNow.AddYears(50));
 
 
