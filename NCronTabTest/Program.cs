@@ -13,7 +13,24 @@ namespace NCronTabTest
         {
             string mystring = "0 0 6 29 2 1";
             var schedule = CrontabSchedule.Parse(mystring, new CrontabSchedule.ParseOptions { IncludingSeconds = true });
-            Console.WriteLine(schedule.GetNextOccurrence(DateTime.UtcNow));
+            var occurrences = schedule.GetNextOccurrences(DateTime.UtcNow, DateTime.UtcNow.AddYears(50));
+
+
+            if (occurrences.Count() > 10) 
+            {
+                for (int i = 0; i < 10; i++ )
+                {
+                    Console.WriteLine(occurrences.ElementAt(i).ToString());
+                }
+            }
+
+            else
+            {
+                foreach (DateTime occurrence in occurrences) 
+                {
+                    Console.WriteLine(occurrence.ToString());
+                }
+            }
         }
     }
 }
